@@ -89,4 +89,18 @@ Plik zawiera konfiguracje połączenia z bazą danych.
 #### Link do api:
 https://hiberblog-api.herokuapp.com
 
+## hiberblog-react-client
+
+### Konto testowe dla aplikacji:
+
+Login: **user@gmail.com**
+Hasło: **user11**
+### Link do aplikacji:
+
+https://hiberblog-react-client.herokuapp.com/all
+
+### Funkcjonalność:
+
+Po wejściu na stronę, pierwszą rzeczą jaka ukazuje się użytkownikowi to formatka logowania:
+
 
