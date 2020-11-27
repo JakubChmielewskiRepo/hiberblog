@@ -91,6 +91,7 @@ https://hiberblog-api.herokuapp.com
 
 ## hiberblog-react-client
 
+Klient został napisany w bibiotece React.js wykorzystuje również wiele innych bibliotek takich jak bootstrap, react-bootstrap, react-router-dom czy fbase.
 ### Konto testowe dla aplikacji:
 
 Login: **user@gmail.com**
@@ -106,15 +107,73 @@ Po wejściu na stronę, pierwszą rzeczą jaka ukazuje się użytkownikowi to fo
 ![](https://github.com/JakubChmielewskiRepo/hiberblog/blob/main/Zrzuty%20ekranu/logowanie.png)
 
 Raz na sesję należy zalogować się do serwisu podając dane z konta testowego, aby uzyskać dostęp do jego zasobów. 
-Aplikacja połączona jest z usługą Firebase, oferującą zdalną bazę danych użytkowników, oraz metodę do ich autoryzacji za pomocą loginu i hasła. Checkbox *remember me* jest jedynie placeholderem.
+Aplikacja połączona jest z usługą Firebase, oferującą zdalną bazę danych użytkowników, oraz metody do ich autentykacji i autoryzacji za pomocą loginu i hasła. 
+
+```
+firebaseApp.auth().signInWithEmailAndPassword(this.state.email,this.state.password)
+```
+
+Aplikacja nie oferuje żadnych powiadomień przy podaniu złych danych a checkbox *remember me* jest jedynie placeholderem.
+
+Wewnętrzna komunikacja w aplikacji odbywa się za pomocą browser routera, w którym poszczególne endpointy są przypisane do odpowiadających im komponentów.
+
+```
+<Switch>
+  <Route exact path="/all" component={ViewAll}/>
+  <Route path="/add" component={AddArticle}/>  
+  <Route path="/update" component={EditArticle}/>  
+  <Route path="/delete" component={DeleteArticle}/> 
+</Switch>
+```
+Zewnętrzna zaś komunikacja opiera się o protokół HTTPS, który umożliwia bezpieczne przesyłanie danych między aplikacjami w ujednoliconym formacie, np. JSON, który jest używany również w tym projekcie.
+
+Oto kod zewnętrznej komunikacji:
+```
+handleSubmit = (event) => {
+    event.preventDefault();
+     console.log("title "+this.state.title)
+     fetch('https://hiberblog-api.herokuapp.com/add', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            title: this.state.title,
+            text: this.state.text
+        })
+        })
+        
+        
+};
+```
+Zawartych jest w nim wiele informacji:
+
+* jaka jest ścieżka połączenia (*Path*)
+* jaka metoda będzie wykonywana ("Method")
+* jaki typ danych będzie przesyłany (*Header*)
+* jak będzie wyglądał obiekt JSON (*Body*), czyli to co faktycznie chcemy przekazać
 
 #### Endpoint */all*
 
-![](https://github.com/JakubChmielewskiRepo/hiberblog/blob/main/Zrzuty%20ekranu/wyswietlanie artykulow.png)
+![](https://github.com/JakubChmielewskiRepo/hiberblog/blob/main/Zrzuty%20ekranu/wyswietlanie_artykulow.png)
 
 Na tym endpointcie automatycznie pobierane są artykuły z bazy danych remote mysql i wyświetlane w formie kart. Na ten moment aplikacja nie oferuje usługi przechodzenia do poszczególnych artykułów ani wyszukiwarki, a link *read more*, oraz wyszukiwarka są jedynie placeholderami.
 
+#### Endpoint */add*
 
+![](https://github.com/JakubChmielewskiRepo/hiberblog/blob/main/Zrzuty%20ekranu/dodawanie_artykulu.png)
 
+Ten endpoint pozwala na dodawanie nowych artykułów do bazy danych.
 
+#### Endpoint */update*
 
+![](https://github.com/JakubChmielewskiRepo/hiberblog/blob/main/Zrzuty%20ekranu/modyfikowanie_artykulu.png)
+
+Endpoint modyfikujący istniejący artykuł, wymaga podania również articleId.
+
+#### Endpoint */delete*
+
+![](https://github.com/JakubChmielewskiRepo/hiberblog/blob/main/Zrzuty%20ekranu/usuwanie_artykulow.png)
+
+Endpoint usuwający artykuły.
