@@ -103,4 +103,18 @@ https://hiberblog-react-client.herokuapp.com/all
 
 Po wejściu na stronę, pierwszą rzeczą jaka ukazuje się użytkownikowi to formatka logowania:
 
+![](https://github.com/JakubChmielewskiRepo/hiberblog/blob/main/Zrzuty%20ekranu/logowanie.png)
+
+Raz na sesję należy zalogować się do serwisu podając dane z konta testowego, aby uzyskać dostęp do jego zasobów. 
+Aplikacja połączona jest z usługą Firebase, oferującą zdalną bazę danych użytkowników, oraz metodę do ich autoryzacji za pomocą loginu i hasła. Checkbox *remember me* jest jedynie placeholderem.
+
+#### Endpoint */all*
+
+![](https://github.com/JakubChmielewskiRepo/hiberblog/blob/main/Zrzuty%20ekranu/wyswietlanie artykulow.png)
+
+Na tym endpointcie automatycznie pobierane są artykuły z bazy danych remote mysql i wyświetlane w formie kart. Na ten moment aplikacja nie oferuje usługi przechodzenia do poszczególnych artykułów ani wyszukiwarki, a link *read more*, oraz wyszukiwarka są jedynie placeholderami.
+
+
+
+
 
