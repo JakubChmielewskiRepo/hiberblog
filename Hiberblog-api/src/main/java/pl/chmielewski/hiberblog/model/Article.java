@@ -26,9 +26,7 @@ public class Article {
     return articleId;
   }
 
-  public void setArticleId(int articleId) {
-    this.articleId = articleId;
-  }
+  
 
 
   public String getTitle() {

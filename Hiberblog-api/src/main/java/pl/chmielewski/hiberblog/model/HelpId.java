@@ -7,7 +7,5 @@ public class HelpId {
         return articleId;
     }
 
-    public void setArticleId(int articleId) {
-        this.articleId = articleId;
-    }
+    
 }
