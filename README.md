@@ -96,6 +96,7 @@ https://hiberblog-api.herokuapp.com
 ## hiberblog-react-client
 
 Klient został napisany w bibiotece React.js wykorzystuje również wiele innych bibliotek takich jak bootstrap, react-bootstrap, react-router-dom czy fbase.
+
 ### Konto testowe dla aplikacji:
 
 Login: **user@gmail.com**
@@ -103,6 +104,8 @@ Hasło: **user11**
 ### Link do aplikacji:
 
 https://hiberblog-react-client.herokuapp.com/all
+
+Z powodu usypiania aplikacji przez serwer heroku, pierwsze uruchomienie aplikacji może być związane ze znaczącą zwłoką czasową
 
 ### Funkcjonalność:
 
