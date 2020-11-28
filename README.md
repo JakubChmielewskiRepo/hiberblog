@@ -86,6 +86,10 @@ ArticleApi zawiera również 3 adnotacje:
 #### Plik application.properties
 Plik zawiera konfiguracje połączenia z bazą danych.
 
+#### Plik pom.xml
+
+Zawiera wszystkie używane przez aplikacje zależności, wraz z ich wersjami o ile zostały zdefiniowane ręcznie, w innym wypadku pobierana jest najnowsza wersja.
+
 #### Link do api:
 https://hiberblog-api.herokuapp.com
 
@@ -177,3 +181,7 @@ Endpoint modyfikujący istniejący artykuł, wymaga podania również articleId.
 ![](https://github.com/JakubChmielewskiRepo/hiberblog/blob/main/Zrzuty%20ekranu/usuwanie_artykulow.png)
 
 Endpoint usuwający artykuły.
+
+## Schemat:
+
+![](https://github.com/JakubChmielewskiRepo/hiberblog/blob/main/Zrzuty%20ekranu/schemat.png)
